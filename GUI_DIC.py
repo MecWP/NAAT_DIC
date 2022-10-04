@@ -1,5 +1,6 @@
 import matplotlib
 matplotlib.use('WXAgg')
+import math
 #from astropy.convolution import convolve_fft
 # importing wx files
 import wx
@@ -356,6 +357,7 @@ class CalcFrame(gui.MainFrame):
 
         Treshold_size = int(self.ET_treshImage.GetLineText(0) )#1500
         Ratio = float(self.ET_treshRate.GetLineText(0) )
+        print(Ratio.type)
 
         self.StatusBar.SetStatusText('Loading Images...')
         # Load Reference Image
@@ -375,8 +377,12 @@ class CalcFrame(gui.MainFrame):
             ####### Bilateral Filter
 
             if np.max(self.I_ref.shape) > Treshold_size:
-                from scipy.misc import imresize
-                self.I_ref = imresize(self.I_ref, Ratio, interp='bilinear', mode=None)
+                #from scipy.misc import imresize
+                #self.I_ref = imresize(self.I_ref, Ratio, interp='bilinear', mode=None)
+                #self.I_ref = cv2.resize(src=self.I_ref, dsize=Ratio, interpolation=cv2.INTER_CUBIC)
+                from PIL import Image
+                self.I_ref = np.array(Image.fromarray(obj=self.I_ref, mode=None).resize(size=Ratio, resample=Image.BICUBIC))
+                
 
                 # Plot Image
             self.plot1Image.draw(self.I_ref, 'Reference Image', 'X', 'Y')
@@ -472,9 +478,18 @@ class CalcFrame(gui.MainFrame):
 
         Treshold_size = int(self.ET_treshImage.GetLineText(0) )#1500
         Ratio = float(self.ET_treshRate.GetLineText(0) )
+        print("-=-=-=-=-=-=-=-=-=-")
+        print(Ratio)
+        print("-=-=-=-=-=-=-=-=-=-")
 
         # Load Reference Image
         dlg = wx.FileDialog(self, "Choose The First Image", "D:", "", "*.*", wx.FD_OPEN)
+        print("-=-=-=-=-=-=-=-=-=-")
+        print(dlg.CharWidth)
+        print(dlg.CharHeight)
+        print("-=-=-=-=-=-=-=-=-=-")
+        teste = (math.ceil(dlg.CharWidth*Ratio), math.ceil(dlg.CharHeight*Ratio))
+
         if dlg.ShowModal() == wx.ID_OK:
             self.filename = dlg.GetFilename()
             self.dirname = dlg.GetDirectory()
@@ -490,9 +505,13 @@ class CalcFrame(gui.MainFrame):
             ####### Bilateral Filter
 
             if np.max(self.I_ref.shape) > Treshold_size:
-                from scipy.misc import imresize
-                self.I_ref = imresize(self.I_ref, Ratio, interp='bilinear', mode=None)
-
+                #from scipy.misc import imresize
+                #self.I_ref = imresize(self.I_ref, Ratio, interp='bilinear', mode=None)
+                ##self.I_ref = cv2.resize(src=heatmap, dsize=input_dims, interpolation=cv2.INTER_CUBIC)
+                ##self.I_ref = cv2.resize(src=self.I_ref, dsize=Ratio, interpolation=cv2.INTER_CUBIC)
+                from PIL import Image
+                self.I_ref = np.array(Image.fromarray(obj=self.I_ref, mode=None).resize(size=teste, resample=Image.BICUBIC))
+                
                 # Plot Image
             self.plot1Image.draw(self.I_ref, 'Reference Image','X','Y')
             self.plot1ROI.draw(self.I_ref, 'Select ROI', 'X', 'Y')
@@ -515,8 +534,15 @@ class CalcFrame(gui.MainFrame):
             temp = cv2.imread(os.path.join(self.dirname, self.filename), 0)
 
             if np.max(temp.shape) > Treshold_size:
-                temp = imresize(temp, Ratio, interp='bilinear', mode=None)
-
+                #
+                #
+                #
+                #####temp = imresize(temp, Ratio, interp='bilinear', mode=None)
+                temp = np.array(Image.fromarray(obj=self.I_ref, mode=None).resize(size=teste, resample=Image.BICUBIC))
+                #
+                #
+                #
+                
             ####### Bilateral Filter
             diag = np.sqrt(temp.shape[0] ** 2 + temp.shape[1] ** 2)
             sigmaSpace = 0.02 * diag
