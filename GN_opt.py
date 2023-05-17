@@ -1,9 +1,9 @@
-import sys
+import sys #check
 sys.path.append(r'C:\Users\padil\Documents\UFPA\ProjetoDIC\DIC_thiago\Edições')
 
-import numpy as np
-import numpy.matlib as npl
-import scipy.linalg as linalg
+import numpy as np #check
+import numpy.matlib as npl #check
+import scipy.linalg as linalg #check
 import Interp_spline as it
 #from scipy.signal import gaussian #(M, std, sym=True) W = np.matmul(W,np.transpose(W))
 #import DIC_froutines

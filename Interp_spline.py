@@ -28,9 +28,11 @@ def Interp_spline(coords, CoCoeff):
 
         y_vec = np.array([1.0, y_d, y_d**2, y_d**3, y_d**4, y_d**5])
 
-
-                                                                    #y                  #x
-        vec_interp[idx,0] = np.matmul(   np.matmul( y_vec,CoCoeff[int(y_tilda_floor)][int(x_tilda_floor)] ) , x_vec  )
+        #print(idx)
+                    
+        vec_interp[idx,0] = np.matmul(   np.matmul( y_vec,CoCoeff[int(y_tilda)][int(x_tilda)] ) , x_vec  )
+                                                #y                  #x
+        #vec_interp[idx,0] = np.matmul(   np.matmul( y_vec,CoCoeff[int(y_tilda_floor)][int(x_tilda_floor)] ) , x_vec  )
                                   #CoCoeff = cell array
 
 

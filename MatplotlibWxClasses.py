@@ -1,11 +1,8 @@
-import matplotlib
+import matplotlib #check
 matplotlib.use('WXAgg')
 
-from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
-from matplotlib.backends.backend_wx import NavigationToolbar2Wx
-from matplotlib.figure import Figure
-from mpl_toolkits.mplot3d import Axes3D
-import math
+from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas #check
+from matplotlib.figure import Figure #check
 import wx
 
 ########################## 2D #####################

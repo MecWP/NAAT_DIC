@@ -745,11 +745,11 @@ class MainFrame ( wx.Frame ):
 		self.m_toolBar1 = self.CreateToolBar( wx.TB_DOCKABLE|wx.TB_HORIZONTAL|wx.SIMPLE_BORDER, wx.ID_ANY ) 
 		self.m_toolBar1.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_SCROLLBAR ) )
 		
-		self.Toolbar_calculate = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"tool", wx.Bitmap( u"greenarrowicon.gif", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, u"Calculate DIC", u"Calculate DIC", None ) 
+		self.Toolbar_calculate = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"tool", wx.Bitmap( u"icons/greenarrowicon.gif", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, u"Calculate DIC", u"Calculate DIC", None ) 
 		
-		self.Toolbar_animate = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"tool", wx.Bitmap( u"16x16panel.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, u"Animate Deformation", u"Animate Result", None ) 
+		self.Toolbar_animate = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"tool", wx.Bitmap( u"icons/16x16panel.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, u"Animate Deformation", u"Animate Result", None ) 
 		
-		self.Toolbar_cplus = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"tool", wx.Bitmap( u"calculator.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, u"C++ Calculation", u"C++ Calculation", None ) 
+		self.Toolbar_cplus = self.m_toolBar1.AddLabelTool( wx.ID_ANY, u"tool", wx.Bitmap( u"icons/calculator.png", wx.BITMAP_TYPE_ANY ), wx.NullBitmap, wx.ITEM_NORMAL, u"C++ Calculation", u"C++ Calculation", None ) 
 		
 		self.m_toolBar1.Realize() 
 		
