@@ -144,6 +144,8 @@ class CalculationMixin:
                                                                 #self.I_all[0]
                         dX2,dY2,max_val2 = self.TemplateMatch( self.I_all[self.Actual_Image].astype('float32'),Template.astype('float32'), cv2.TM_CCOEFF_NORMED,[j,i])#['cv2.TM_CCOEFF', 'cv2.TM_CCOEFF_NORMED', 'cv2.TM_CCORR','cv2.TM_CCORR_NORMED', 'cv2.TM_SQDIFF', 'cv2.TM_SQDIFF_NORMED']
 
+
+######################################################################
                         Original_I = True
                         if abs(dX-dX2) > 10 or abs(dX-dX2) > 10:
                             Original_I = True
